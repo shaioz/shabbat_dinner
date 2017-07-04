@@ -6,6 +6,6 @@ export class TmpPage {
   }
 
   getParagraphText() {
-    return element(by.css('app-root h1')).getText();
+    return element(by.css('appOld-root h1')).getText();
   }
 }

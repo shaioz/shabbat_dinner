@@ -53,11 +53,11 @@
     "ngrx-store-freeze": "^0.1.9",
     "normalize.css": "^5.0.0",
     "path": "^0.12.7",
-    "rxjs": "^5.1.0",
+    "rxjs": "5.*",
     "ts-helpers": "^1.1.2",
     "ts-node": "~3.0.2",
     "tslint": "^4.5.1",
-    "typescript": "^2.3.4",
+    "typescript": "2.4.0",
     "uuid": "^3.0.1",
     "zone.js": "^0.8.9"
   },

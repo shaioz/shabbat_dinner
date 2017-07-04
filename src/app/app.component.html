@@ -1,9 +1,50 @@
-<app-ui-top-navigation></app-ui-top-navigation>
+<!--The content below is only a placeholder and can be replaced.-->
+<div style="text-align:center">
+  <h1>
+    {{title}}
+  </h1>
+  <img width="300" src="../assets/open_img.jpg">
+    <div *ngIf='when_date'>
+      <h2>
+        {{when_text}} {{when_date.toLocaleDateString()}}
+      </h2>
+      <div *ngIf='coming_list'>
+        <table align="center" dir="rtl">
+          <form name="myForm">
+            <tr *ngFor="let p of coming_list">
+              <th>{{p.name}}</th>
+              <th>
+                <input name="{{p.name}}_checkbox" type="checkbox" [(ngModel)]="p.is_coming"/>
+              </th>
+              <th>{{p.coming()}}</th>
+            </tr>
+          </form>
+        </table>
+        <form dir="rtl">
+          {{who_washed}}
+          <input #washer/>
+          <button (click)="finishDinner(washer.value)">{{finish_text}}</button>
+        </form>
 
-<app-ui-sub-navigation [title]="(observable$ | async)?.title" [description]="(observable$ | async)?.text"></app-ui-sub-navigation>
-
-<div class="main">
-  <router-outlet></router-outlet>
+      </div>
+    </div>
+    <div *ngIf='when_date === null'>
+      <h2>
+        {{no_dinner_text}}
+      </h2>
+      <button (click)="planDinner()">{{plan_text}}</button>
+    </div>
+  <div *ngIf='previous_list'>
+    <table align="center" dir="rtl">
+      <tr>
+        <th>מתי</th>
+        <th>שטף כלים</th>
+      </tr>
+      <tr *ngFor="let dinner of previous_list">
+        <th>{{dinner.date.toLocaleDateString()}}</th>
+        <th>{{dinner.washer}}</th>
+      </tr>
+    </table>
+  </div>
 </div>
 
-<router-outlet name='modal'></router-outlet>
